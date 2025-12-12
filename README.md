@@ -1,49 +1,71 @@
-# AloPyek_Analysis
-Excellence Performance Analysis on AloPeyk fleet dataset.
-.
-گزارش جامع تحلیل عملیات و بخش‌بندی ناوگان
-تاریخ تحلیل: داده‌های بازه ۲۲ مه تا ۹ ژوئن ۲۰۲۴ (۱ خرداد تا ۱۹ خرداد ۱۴۰۴)
-پوشش جغرافیایی: تهران، مشهد، شیراز
-بخش اول: خلاصه تاثیرات تجاری (Executive Summary)
-۱. روندهای کلیدی مشاهده شده (Key Trends)
-ناپایداری در شبکه سراسری: تحلیل سری‌های زمانی روزانه (Daily Trend Analysis) نشان می‌دهد که هر سه شهر اصلی (تهران، مشهد و شیراز) نوسانات سینوسی و قابل‌توجهی را در نرخ تأخیر تجربه می‌کنند. هیچ‌یک از شهرها به وضعیت "پایدار" (Steady State) نرسیده‌اند که نشان‌دهنده آسیب‌پذیری کل شبکه در برابر تغییرات روزانه تقاضاست.
-ساعات بحرانی (Critical Hours): نقشه حرارتی (Heatmap) نشان می‌دهد که تمرکز تاخیرها در ساعات اوج تقاضا (Confirmation Hour) است. این یعنی مشکل اصلی ناشی از ناکارآمدی در تمام طول روز نیست، بلکه ناشی از "کمبود عرضه لحظه‌ای" در پیک‌های کاری است.
-عدم تاثیر سرعت بر کیفیت: تحلیل همبستگی (Correlation Matrix) نشان داد که افزایش سرعت پیک‌ها تاثیر معناداری بر کاهش تاخیر ندارد. گلوگاه اصلی در فرآیندهای قبل از حرکت (مانند زمان آماده‌سازی غذا و زمان یافتن پیک) نهفته است.
-۲. بخش‌های دارای عملکرد ضعیف (Underperforming Segments)
-با استفاده از تحلیل داده و خوشه‌بندی، نقاط ضعف شناسایی شدند:
-شهر شیراز (لبه پرتگاه): اگرچه حجم سفارش کمتری دارد، اما بالاترین نرخ خرابی و بیشترین زمان انتظار برای یافتن پیک (Queue Time ~۱۰ دقیقه) را ثبت کرده است. نمودارهای روزانه نشان‌دهنده جهش‌های ناگهانی نرخ خرابی در انتهای ماه هستند.
-فروشندگان "شبح" (The Ghost Stores): گروهی از فروشندگان شناسایی شدند (Cluster 2 در تحلیل خوشه‌بندی) که نرخ تاخیر فاجعه‌بار ۶۷٪ دارند. با این حال، تحلیل دقیق‌تر نشان داد حجم سفارش این گروه ناچیز است (میانگین ۳ سفارش) و نباید با ریسک عملیاتی کلان اشتباه گرفته شوند.
-پیک‌های کم‌بازده: بخشی از ناوگان که فعالیت بسیار کمی دارند (روزانه ۱.۵ سفارش) اما نرخ خطای بالایی تولید می‌کنند و ظرفیت سیستم را اشغال می‌کنند.
+# 🛵 AloPeyk Operational Efficiency & Fleet Segmentation Analysis
 
+![Python](https://img.shields.io/badge/Python-3.8%2B-blue)
+![Pandas](https://img.shields.io/badge/Library-Pandas-150458)
+![Scikit-Learn](https://img.shields.io/badge/Machine%20Learning-Scikit--Learn-F7931E)
+![Status](https://img.shields.io/badge/Status-Complete-green)
 
-۳. پیشنهادات اجرایی (Actionable Recommendations)
-برای تیم عملیات (Operations):
-تمرکز بر زمان انتظار (Queue Time): با توجه به اینکه گلوگاه اصلی در شیراز "زمان انتظار برای پیک" است، باید الگوریتم‌های قیمت‌گذاری پویا (Surge Pricing) در ساعات پیک شیراز بازنگری شوند تا عرضه افزایش یابد.
-مدیریت نوسان تهران: برای کنترل نوسانات تهران، پیاده‌سازی سیستم "پیش‌بینی تقاضا" (Demand Forecasting) برای تخصیص پیش از موعد پیک‌ها در روزهای پرخطر ضروری است.
-برای مدیریت فروشندگان (Vendor Management):
-پاکسازی دیتابیس: فروشندگان خوشه ۲ (نرخ خرابی ۶۷٪ و حجم کم) باید به صورت خودکار تعلیق یا از چرخه تخصیص خارج شوند.
-آموزش هدفمند: تمرکز تیم آموزش باید روی فروشندگانی باشد که زمان آماده‌سازی (PickUp_DU) بالای ۵ دقیقه دارند، چرا که این عامل همبستگی مستقیم با تأخیر نهایی دارد.
+## 📌 Project Overview
+This project provides a comprehensive data-driven analysis of **AloPeyk's operational performance** across three major cities: **Tehran, Mashhad, and Shiraz**. The goal was to identify bottlenecks in the last-mile delivery ecosystem, detect statistical anomalies in service quality, and segment the fleet (Vendors & Bikers) to optimize resource allocation.
 
-بخش دوم: گزارش فنی و مراحل انجام کار (Methodology Report)
-شرح گام‌به‌گام اقدامات انجام شده در نوت‌بوک برای رسیدن به نتایج فوق:
-گام ۱: پیش‌پردازش داده‌ها (Preprocessing & Cleaning)
-فراخوانی کتابخانه‌های pandas، numpy، matplotlib و seaborn.
-بارگذاری دیتاست و تبدیل ستون‌های زمانی (مانند Date و CancelHour) به فرمت datetime جهت محاسبات دقیق.
-محاسبه شاخص‌های زمانی کلیدی:
-Operation_DU: کل زمان عملیات (از تأیید تا تحویل).
-PickUp_DU: زمان معطلی پیک در مبدأ.
-Queue_DU: زمان انتظار مشتری برای یافتن پیک.
-ایجاد ستون‌های هدف: ساخت ستون Is_Hyperdelayed برای شناسایی سفارش‌هایی که بیش از ۶۰ دقیقه طول کشیده‌اند.
+Using **Python** for data processing and **Unsupervised Machine Learning (K-Means)** for segmentation, this analysis delivers actionable insights to reduce hyper-delays and improve customer satisfaction.
 
+---
 
-گام ۲: تحلیل اکتشافی داده‌ها (EDA)
-تحلیل جغرافیایی: گروه‌بندی داده‌ها بر اساس City و مقایسه میانگین زمان‌های عملیاتی. مشخص شد که تهران بیشترین حجم و شیراز بیشترین زمان انتظار را دارد.
-تحلیل همبستگی (Heatmap): رسم ماتریس همبستگی برای کشف رابطه بین متغیرها (مثلاً رابطه بین ساعت سفارش و نرخ تأخیر).
-تحلیل روند (Trend Analysis): رسم نمودار خطی برای مشاهده تغییرات نرخ Is_Hyperdelayed در طول زمان برای هر شهر به تفکیک.
-گام ۳: بخش‌بندی مشتریان و فروشندگان (Segmentation)
-فروشندگان: استفاده از داده‌های تجمیعی (تعداد سفارش، میانگین زمان پخت، نرخ تأخیر) برای دسته‌بندی فروشندگان.
-شناسایی ۴ خوشه متفاوت شامل فروشندگان پرکار و موفق، و فروشندگان کم‌کار و پرخطر.
-پیک‌ها: تحلیل رفتار پیک‌ها بر اساس تعداد سفر روزانه و سرعت.
-گام ۴: نتیجه‌گیری (Insight Generation)
-ترکیب خروجی‌های آماری و بصری برای تدوین استراتژی‌های بهبود وضعیت در شهرهای مختلف و گروه‌های کاری متفاوت.
+## 🚀 Key Objectives
+1.  **Operational Health Check:** Assess KPIs (Order Volume, Delay Rates, Queue Times) across different geographies.
+2.  **Anomaly Detection:** Identify statistically significant spikes in failure rates using **Z-Score analysis**.
+3.  **Root Cause Analysis:** Determine whether delays are driven by traffic, supply shortages, or vendor prep times.
+4.  **Strategic Segmentation:** Cluster Vendors and Bikers into meaningful business groups (e.g., "Stars" vs. "High Risk") using **K-Means Clustering**.
 
+---
+
+## 🛠️ Tools & Technologies
+* **Language:** Python
+* **Data Manipulation:** Pandas, NumPy
+* **Visualization:** Matplotlib, Seaborn
+* **Machine Learning:** Scikit-Learn (StandardScaler, K-Means, Elbow Method)
+* **Environment:** Google Colab / Jupyter Notebook
+
+---
+
+## 📊 Methodology & Workflow
+
+### 1. Data Preprocessing & Cleaning
+* Handled missing values and removed outliers (e.g., GPS errors showing speeds > 120 km/h).
+* Engineered new features: `Operation_DU` (Total Duration), `Is_HyperDelay` (>60 min flag), and `Speed_LastMile_kmh`.
+
+### 2. Exploratory Data Analysis (EDA)
+* **City Scorecard:** Identified that while **Tehran** handles the highest volume, **Shiraz** suffers from the highest "Queue Time" (supply shortage).
+* **Heatmaps:** Revealed that delays are highly correlated with specific **"Confirmation Hours"** (peak demand) rather than average fleet speed.
+* **Trend Analysis:** Daily time-series plots highlighted system-wide volatility and specific degradation trends in Shiraz.
+
+### 3. Statistical Anomaly Detection
+* Applied **Z-Score Analysis** to flag daily failure rates.
+* Detected critical anomalies (Z > 2.0) in **Tehran** on May 30th and June 5th, indicating severe, non-random operational incidents in the core market.
+
+### 4. Advanced Segmentation (K-Means)
+* **Vendor Clustering:** Segmented into 4 groups.
+    * *Insight:* A "Ghost Cluster" was found with a **67% failure rate** but negligible volume, separating noise from actual operational risks.
+* **Biker Clustering:** Segmented into 4 groups based on Volume, Speed, and Reliability.
+    * *Insight:* Identified a "Critical Risk" segment (low activity, high error) vs. "Workhorses" (high activity, low error).
+
+---
+
+## 📈 Key Insights & Results
+
+| Insight | Description | Impact |
+| :--- | :--- | :--- |
+| **The "Tehran Paradox"** | Tehran is stable but experienced 2 critical shock events (Anomalies). | High impact due to volume dominance. |
+| **Supply Shortage** | Shiraz has a ~10 min average queue time. | Indicates a need for dynamic pricing/supply incentives. |
+| **Speed vs. Quality** | No strong correlation between high speed and low delay. | KPIs should shift from speed to "Reliability". |
+| **Pareto Rule** | ~4% of vendors cause a disproportionate amount of delays. | Targeted offboarding required. |
+
+---
+
+## 📂 Project Structure
+```text
+├── AloPeyk_Task_KianaSammak.ipynb  # Main Analysis Notebook (Source Code)
+├── DataTask.xlsx                   # Raw Dataset (Confidential/Sample)
+├── README.md                       # Project Documentation
+└── requirements.txt                # List of dependencies
