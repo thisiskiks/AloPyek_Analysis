@@ -36,7 +36,7 @@ Using **Python** for data processing and **Unsupervised Machine Learning (K-Mean
 
 ### 1. Data Preprocessing & Cleaning
 * Handled missing values and removed outliers (e.g., GPS errors showing speeds > 120 km/h).
-* Engineered new features: `Operation_DU` (Total Duration), `Is_HyperDelay` (>60 min flag), and `Speed_LastMile_kmh`.
+* Engineered new features: `Daily_Share_Rate` (Bikers Share of Daily Trips) , `Is_HyperDelay` (>60 min flag), and `Speed_LastMile_kmh` (Bikers delivery speed from vendor to customer).
 
 ### 2. Exploratory Data Analysis (EDA)
 * **City Scorecard:** Identified that while **Tehran** handles the highest volume, **Shiraz** suffers from the highest "Queue Time" (supply shortage).
@@ -51,7 +51,7 @@ Using **Python** for data processing and **Unsupervised Machine Learning (K-Mean
 * **Vendor Clustering:** Segmented into 4 groups.
     * *Insight:* A "Ghost Cluster" was found with a **67% failure rate** but negligible volume, separating noise from actual operational risks.
 * **Biker Clustering:** Segmented into 4 groups based on Volume, Speed, and Reliability.
-    * *Insight:* Identified a "Critical Risk" segment (low activity, high error) vs. "Workhorses" (high activity, low error).
+    * *Insight:* Identified a "Critical Risk" segment (low activity, high error) vs. "Hardworkers" (high activity, low error).
 
 ---
 
