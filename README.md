@@ -1,10 +1,13 @@
 # 🛵 AloPeyk Operational Efficiency & Fleet Segmentation Analysis
 
-![Python](https://img.shields.io/badge/Python-3.8%2B-blue)
-![Pandas](https://img.shields.io/badge/Library-Pandas-150458)
-![Scikit-Learn](https://img.shields.io/badge/Machine%20Learning-Scikit--Learn-F7931E)
-![Status](https://img.shields.io/badge/Status-Complete-green)
+The following libraries were used for analysis and visualization. Click on the badges to view their official documentation:
 
+[![Python](https://img.shields.io/badge/Python-3.8%2B-blue?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
+[![Pandas](https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white)](https://pandas.pydata.org/)
+[![NumPy](https://img.shields.io/badge/Numpy-777BB4?style=for-the-badge&logo=numpy&logoColor=white)](https://numpy.org/)
+[![Matplotlib](https://img.shields.io/badge/Matplotlib-%23ffffff.svg?style=for-the-badge&logo=Matplotlib&logoColor=black)](https://matplotlib.org/)
+[![Seaborn](https://img.shields.io/badge/Seaborn-4C72B0?style=for-the-badge&logo=python&logoColor=white)](https://seaborn.pydata.org/)
+[![Scikit-Learn](https://img.shields.io/badge/scikit--learn-%23F7931E.svg?style=for-the-badge&logo=scikit-learn&logoColor=white)](https://scikit-learn.org/)
 ## 📌 Project Overview
 This project provides a comprehensive data-driven analysis of **AloPeyk's operational performance** across three major cities: **Tehran, Mashhad, and Shiraz**. The goal was to identify bottlenecks in the last-mile delivery ecosystem, detect statistical anomalies in service quality, and segment the fleet (Vendors & Bikers) to optimize resource allocation.
 
