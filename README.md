@@ -1,5 +1,6 @@
 # AloPyek_Analysis
 Excellence Performance Analysis on AloPeyk fleet dataset.
+.
 گزارش جامع تحلیل عملیات و بخش‌بندی ناوگان
 تاریخ تحلیل: داده‌های بازه ۲۲ مه تا ۹ ژوئن ۲۰۲۴ (۱ خرداد تا ۱۹ خرداد ۱۴۰۴)
 پوشش جغرافیایی: تهران، مشهد، شیراز
