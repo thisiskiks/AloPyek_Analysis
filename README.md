@@ -28,7 +28,7 @@ Using **Python** for data processing and **Unsupervised Machine Learning (K-Mean
 * **Data Manipulation:** Pandas, NumPy
 * **Visualization:** Matplotlib, Seaborn
 * **Machine Learning:** Scikit-Learn (StandardScaler, K-Means, Elbow Method)
-* **Environment:** Google Colab / Jupyter Notebook
+* **Environment:** Google Colab
 
 ---
 
